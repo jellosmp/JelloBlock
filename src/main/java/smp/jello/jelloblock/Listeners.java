@@ -60,7 +60,7 @@ public class Listeners implements Listener {
         int taskID = plugin.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, () -> {
             if (player.isOnline())
                 openInventory(player);
-        }, 0, 100);
+        }, 0, 60);
 
         annoyingBookTaskHash.put(player, taskID);
     }
