@@ -30,22 +30,22 @@ public class Listeners implements Listener {
         bookMeta.setTitle("blank");
         bookMeta.setAuthor("server");
         bookMeta.addPage(
-                ChatColor.DARK_GREEN.toString() +
-                        ChatColor.BOLD +
-                        "Welcome!\n" +
-                        ChatColor.RESET +
-                        "This server is not public yet! It will be released early next month." +
-                        " The server will be" +
-                        ChatColor.BOLD +
-                        " Whitelist Only!" +
-                        ChatColor.RESET +
-                        " See the" +
-                        ChatColor.BLUE +
-                        ChatColor.BOLD +
-                        " Discord" +
-                        ChatColor.RESET +
-                        " to join.\n\n" +
-                        "https://dsc.gg/jelsmp"
+    ChatColor.DARK_GREEN.toString() +
+            ChatColor.BOLD +
+            "Welcome!\n" +
+            ChatColor.RESET +
+            "This server is not public yet! It will be released early next month." +
+            " The server will be" +
+            ChatColor.BOLD +
+            " Whitelist Only!" +
+            ChatColor.RESET +
+            " See the" +
+            ChatColor.BLUE +
+            ChatColor.BOLD +
+            " Discord" +
+            ChatColor.RESET +
+            " to join.\n\n" +
+            "https://dsc.gg/jelsmp"
         );
         BOOK.setItemMeta(bookMeta);
     }
