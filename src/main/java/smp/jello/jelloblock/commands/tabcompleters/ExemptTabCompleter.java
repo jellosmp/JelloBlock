@@ -23,8 +23,7 @@ public class ExemptTabCompleter implements TabCompleter {
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
-        Bukkit.getLogger().warning("hi");
-        if (args.length == 0) {
+        if (args.length == 1) {
             return SUBCOMMANDS;
         }
 
