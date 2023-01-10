@@ -7,3 +7,14 @@ depend: [ JelloCore ]
 authors: [ Eldon ]
 description: Blocks players from entering world and doing anything and throws up a book menu.
 website: https://eldon.zone/
+commands:
+  deactivate:
+    description: Deactivates the block
+    usage: /deactivate
+    permission-message: "You may not turn off the block."
+    permission: smp.jello.block.deactivate
+  exempt:
+    description: Manage the list of exempt users
+    usage: /exempt <subcommand> [user?](s)
+    permission: smp.jello.block.exempt.*
+    permission-message: "You may not manage or view any part of the exemption list"

@@ -3,6 +3,8 @@ package smp.jello.jelloblock;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+import smp.jello.jelloblock.commands.DeactivateCommand;
+import smp.jello.jelloblock.commands.ExemptCommand;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +25,9 @@ public final class JelloBlock extends JavaPlugin {
         saveConfig();
 
         Bukkit.getPluginManager().registerEvents(new Listeners(), this);
+
+        getCommand("deactivate").setExecutor(new DeactivateCommand());
+        getCommand("exempt").setExecutor(new ExemptCommand());
     }
 
     public static JelloBlock getInstance() {
