@@ -7,6 +7,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -23,6 +25,7 @@ public class Listeners implements Listener {
     final ItemStack BOOK;
 
     private final HashMap<Player, Integer> annoyingBookTaskHash = new HashMap<>();
+    private final String KICK_MSG = "Server is not open!";
 
     public Listeners() {
         BOOK = new ItemStack(Material.WRITTEN_BOOK);
@@ -58,30 +61,43 @@ public class Listeners implements Listener {
         openInventory(player);
 
         int taskID = plugin.getServer().getScheduler().scheduleSyncRepeatingTask(plugin, () -> {
-            if (player.isOnline())
+            if (player.isOnline()) {
                 openInventory(player);
-        }, 0, 60);
+                return;
+            }
+
+            if (!annoyingBookTaskHash.containsKey(player)) return;
+            plugin.getServer().getScheduler().cancelTask(annoyingBookTaskHash.get(player));
+        }, 0, 10);
 
         annoyingBookTaskHash.put(player, taskID);
     }
 
     @EventHandler
-    public void onPlayerLeave(PlayerQuitEvent event) {
-        Player player = event.getPlayer();
-
-        if (!annoyingBookTaskHash.containsKey(player)) return;
-
-        plugin.getServer().getScheduler().cancelTask(annoyingBookTaskHash.remove(player));
-    }
-
-    @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
         if (isExempt(event.getPlayer())) return;
-        event.getPlayer().kickPlayer("The server is currently not open!");
+        event.getPlayer().kickPlayer(KICK_MSG);
         event.setCancelled(true);
         event.setDropItems(false);
         event.setExpToDrop(0);
     }
+
+    @EventHandler
+    public void onInventoryOpen(InventoryOpenEvent event) {
+        if (isExempt((Player) event.getPlayer())) return;
+        ((Player) event.getPlayer()).kickPlayer(KICK_MSG);
+        event.setCancelled(true);
+    }
+
+    @EventHandler
+    public void onBlockPlace(BlockPlaceEvent event) {
+        if (isExempt(event.getPlayer())) return;
+        event.getPlayer().kickPlayer(KICK_MSG);
+        event.setCancelled(true);
+    }
+
+    @EventHandler
+    public void on
 
     @EventHandler
     public void onMoveEvent(PlayerMoveEvent event) {
