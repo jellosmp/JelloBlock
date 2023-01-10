@@ -97,9 +97,6 @@ public class Listeners implements Listener {
     }
 
     @EventHandler
-    public void on
-
-    @EventHandler
     public void onMoveEvent(PlayerMoveEvent event) {
         if (isExempt(event.getPlayer())) return;
         event.setCancelled(true);
