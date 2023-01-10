@@ -104,7 +104,7 @@ public class Listeners implements Listener {
 
     private boolean isExempt(Player player) {
         List<String> exemptPlayers = config.getStringList("exempt");
-        return exemptPlayers.contains(player.getName());
+        return exemptPlayers.contains(player.getName()) || !config.getBoolean("active");
     }
 
     private void openInventory(Player player) {
