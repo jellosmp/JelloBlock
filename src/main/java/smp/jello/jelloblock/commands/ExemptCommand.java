@@ -19,7 +19,7 @@ public class ExemptCommand implements CommandExecutor {
         return switch (args[0]) {
             case "add" -> onAdd(sender, args);
             case "remove" -> onRemove(sender, args);
-            case "list" -> onList(sender, args);
+            case "list" -> onList(sender);
             default -> false;
         };
     }
@@ -44,7 +44,7 @@ public class ExemptCommand implements CommandExecutor {
         return true;
     }
 
-    private boolean onList(CommandSender sender, String[] args) {
+    private boolean onList(CommandSender sender) {
         List<String> exemptPlayers = config.getStringList("exempt");
         sender.sendMessage("There are (" + exemptPlayers.size() + ") exempt players: " + String.join(", ", exemptPlayers));
         return true;
