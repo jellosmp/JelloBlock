@@ -21,6 +21,8 @@ public class ActivationCommand implements CommandExecutor {
         config.set("active", arg0.equals("true"));
         plugin.saveConfig();
 
+        sender.sendMessage("Set Jello Block active state to '" + arg0 + "'!");
+
         return true;
     }
 }
