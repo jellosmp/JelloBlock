@@ -4,13 +4,16 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
+import smp.jello.jelloblock.JelloBlock;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class ExemptTabCompleter implements TabCompleter {
+    JelloBlock plugin = JelloBlock.getInstance();
+    FileConfiguration config = plugin.getConfig();
 
     private final List<String> SUBCOMMANDS;
 
@@ -27,13 +30,15 @@ public class ExemptTabCompleter implements TabCompleter {
             return SUBCOMMANDS;
         }
 
-        if (Objects.equals(args[0], "length")) return null;
-
-        return Bukkit
-                .getServer()
-                .getOnlinePlayers()
-                .stream()
-                .map(Player::getName)
-                .toList();
+        return switch (args[0]) {
+            case "add" -> Bukkit
+                    .getServer()
+                    .getOnlinePlayers()
+                    .stream()
+                    .map(Player::getName)
+                    .toList();
+            case "remove" -> config.getStringList("exempt");
+            default -> null;
+        };
     }
 }
