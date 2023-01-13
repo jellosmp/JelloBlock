@@ -31,7 +31,7 @@ public final class JelloBlock extends JavaPlugin {
 
         getCommand("activation").setExecutor(new ActivationCommand());
         getCommand("activation").setTabCompleter(new ActivationTabCompleter());
-        
+
         getCommand("exempt").setExecutor(new ExemptCommand());
         getCommand("exempt").setTabCompleter(new ExemptTabCompleter());
     }
