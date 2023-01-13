@@ -3,8 +3,9 @@ package smp.jello.jelloblock;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
-import smp.jello.jelloblock.commands.DeactivateCommand;
+import smp.jello.jelloblock.commands.ActivationCommand;
 import smp.jello.jelloblock.commands.ExemptCommand;
+import smp.jello.jelloblock.commands.tabcompleters.ActivationTabCompleter;
 import smp.jello.jelloblock.commands.tabcompleters.ExemptTabCompleter;
 
 import java.util.ArrayList;
@@ -28,7 +29,9 @@ public final class JelloBlock extends JavaPlugin {
 
         Bukkit.getPluginManager().registerEvents(new Listeners(), this);
 
-        getCommand("deactivate").setExecutor(new DeactivateCommand());
+        getCommand("activation").setExecutor(new ActivationCommand());
+        getCommand("activation").setTabCompleter(new ActivationTabCompleter());
+        
         getCommand("exempt").setExecutor(new ExemptCommand());
         getCommand("exempt").setTabCompleter(new ExemptTabCompleter());
     }

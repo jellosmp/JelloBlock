@@ -8,13 +8,16 @@ authors: [ Eldon ]
 description: Blocks players from entering world and doing anything and throws up a book menu.
 website: https://eldon.zone/
 commands:
-  deactivate:
-    description: Deactivates the block
-    usage: /deactivate
-    permission-message: "You may not turn off the block."
-    permission: smp.jello.block.deactivate
+  activation:
+    description: Allows for managing the block state
+    usage: /activation [true:false]
+    permission-message: "You may not manage this command."
+    permission: smp.jello.block.activation
+    aliases:
+      - active
+      - setactive
   exempt:
     description: Manage the list of exempt users
     usage: /exempt <subcommand> [user?](s)
-    permission: smp.jello.block.exempt.*
+    permission: smp.jello.block.exempt
     permission-message: "You may not manage or view any part of the exemption list"
