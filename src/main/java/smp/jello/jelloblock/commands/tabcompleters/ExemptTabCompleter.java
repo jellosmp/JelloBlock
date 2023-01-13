@@ -27,8 +27,6 @@ public class ExemptTabCompleter implements TabCompleter {
             return SUBCOMMANDS;
         }
 
-        if (Objects.equals(args[0], "list")) return null;
-
         return Bukkit
                 .getServer()
                 .getOnlinePlayers()
