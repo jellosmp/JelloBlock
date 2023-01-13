@@ -27,7 +27,7 @@ public class ExemptTabCompleter implements TabCompleter {
             return SUBCOMMANDS;
         }
 
-        if (args[0] == "length") return null;
+        if (Objects.equals(args[0], "length")) return null;
 
         return Bukkit
                 .getServer()

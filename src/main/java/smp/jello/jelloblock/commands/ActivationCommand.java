@@ -8,5 +8,6 @@ public class ActivationCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         return false;
+        if (!Objects.equals(arg0, "true") && !Objects.equals(arg0, "false"))
     }
 }
