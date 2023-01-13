@@ -2,7 +2,7 @@ name: JelloBlock
 version: '${project.version}'
 main: smp.jello.jelloblock.JelloBlock
 api-version: 1.19
-prefix: JelloBlock
+prefix: Jello Block
 depend: [ JelloCore ]
 authors: [ Eldon ]
 description: Blocks players from entering world and doing anything and throws up a book menu.
