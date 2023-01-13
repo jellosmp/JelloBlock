@@ -40,7 +40,7 @@ public class ExemptCommand implements CommandExecutor {
         exemptPlayers.removeAll(Arrays.asList(playersToAdd));
         config.set("exempt", exemptPlayers);
         plugin.saveConfig();
-        sender.sendMessage("Success, added (" + playersToAdd.length + ") player(s) to exempt list: " + String.join(", ", playersToAdd));
+        sender.sendMessage("Success, removed (" + playersToAdd.length + ") player(s) from exempt list: " + String.join(", ", playersToAdd));
         return true;
     }
 
